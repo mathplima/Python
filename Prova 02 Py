@@ -1,0 +1,16 @@
+nome = input("Digite seu nome: ")
+tel = int(input("Digite seu telefone sem DDD: "))
+email = input("Digite seu e-mail: ")
+
+dados = {
+    "Nome": nome,
+    "Telefone": tel,
+    "Email": email,
+}
+
+print(f"""
+=========================================
+    Dados Pessoais
+    {dados}
+=========================================
+""")
