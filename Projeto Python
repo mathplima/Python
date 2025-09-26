@@ -1,0 +1,68 @@
+tarefas = []
+
+def add_tarefa (nome_tarefa, prioridade, categoria):
+    
+
+    nova_tarefa = {
+        "Nome:": nome_tarefa,
+        "Prioridade:": prioridade,
+        "Categoria:": categoria,
+        "Status:": "Pendente"
+    }
+    tarefas.append(nova_tarefa)
+    print("Tarefa cadastrada com sucesso")
+
+
+def listar_tarefas():
+    for element in tarefas:
+        print(element)
+
+def marcar_concluida():
+    marcar_tarefa = input("Digite a tarefa que você deseja marcar como concluida: ")
+    for element in tarefas:
+        if element["Nome"] == marcar_tarefa:
+            element["Status"] = "Concluído"
+            print("Tarefa marcada como concluído")
+
+def filtrar_categoria():
+    achar_categoria = input("Digite a categoria que você deseja filtrar: ")
+    for element in tarefas:
+        if element["Categoria"] == achar_categoria:
+            print(element["Categoria"])
+
+def filtrar_prioridade():
+    achar_prioridade = input("Digite uma prioridade para filtrar: (baixa/media/alta)")
+    for element in tarefas:
+        if element["Prioridade"] == achar_prioridade:
+            print(element["Prioridade"])
+
+
+
+while True:
+    menu = input("""
+    Escolha uma opção:
+        1 - Adicionar Novo Jogo
+        2 - Ver todos os Jogos
+        3 - Marcar jogatina como concluída
+        4 - Filtrar jogo por categoria
+        5 - Filtrar jogo por prioridade
+        0 - Sair
+        OBS: Escolha apenas opção por vez: (1/2/3/4/5/0)
+""")
+    if menu == "1":
+        nome_tarefa = input("Digite o nome do seu Jogo: ")
+        prioridade = input("Digite a prioridade do seu jogo: (baixa/media/alta) ")
+        categoria = input("Digite a categoria do seu jogo: (fps/horror/farm/cozy) ")
+        add_tarefa(nome_tarefa, prioridade, categoria)
+    elif menu == "2":
+        listar_tarefas()
+    elif menu == "3":
+        marcar_concluida()
+    elif menu == "4":
+        filtrar_categoria()
+    elif menu == "5":
+        filtrar_prioridade()
+    elif menu == "0":
+        break
+    else:
+        print("Opção inválida")
