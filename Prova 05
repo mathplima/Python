@@ -1,0 +1,12 @@
+def maior_numero(n1, n2, n3):
+    if n1 > n2 and n1 > n3:
+        return n1
+    elif n2 > n1 and n2 > n3:
+        return n2
+    else:
+        return n3
+    
+numero1 = float(input(f"Valor do número 1: "))
+numero2 = float(input(f"Valor do número 2: "))
+numero3 = float(input(f"Valor do número 3: "))
+print(maior_numero(numero1, numero2, numero3))
