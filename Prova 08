@@ -1,0 +1,7 @@
+import os
+
+meu_diretorio = os.getcwd()
+arquivos = os.listdir(meu_diretorio)
+print("Arquivos encontrados: ")
+for item in arquivos:
+    print(item)
