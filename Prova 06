@@ -1,0 +1,90 @@
+tarefas = []
+
+def add_tarefa():
+    print("====== Cadastre seu Jogo ======")    
+    nova_tarefa = {
+        "Nome": input("Digite o nome do seu Jogo: ").lower().strip(),
+        "Prioridade": input("Digite a prioridade:  (baixa/media/alta)").lower().strip(),
+        "Categoria": input("Digite a categoria do Jogo:  (fps/cozy/farm/terror)").lower().strip(),
+        "Status": "Pendente"
+    }
+    tarefas.append(nova_tarefa)
+    print(f"Jogo {nova_tarefa['Nome']} cadastrado com sucesso!")
+
+
+def listar_tarefas():
+    print("=== Lista dos Jogos ===")
+    for element in tarefas:
+        print(f"""JOGO: {element['Nome']}
+        PRIORIDADE: {element['Prioridade']}
+        CATEGORIA: {element['Categoria']}
+        STATUS: {element['Status']}""")
+    print("=== Fim da lista! ===")
+
+
+def marcar_concluida():
+    print("===== Marque seu Jogo ======")
+    marcar_tarefa = input("Digite o Jogo que você deseja marcar como concluido: ").lower().strip()
+    for element in tarefas:
+        if element['Nome'].lower() == marcar_tarefa.lower():
+            element['Status'] = "Concluído"
+            print(f"Jogo: {element['Nome']} marcado como concluído")
+            return
+        else:
+            print("Jogo nenhum encontrado.")
+
+
+def filtrar_categoria():
+    print("===== Filtre por Categoria =====")
+    achar_categoria = input("Digite a categoria que você deseja filtrar: ").lower().strip()
+    print("=== Jogos Encontrados: ===")
+    for element in tarefas:
+        if element['Categoria'].lower() == achar_categoria:
+            print(f"{element['Nome']}")
+        else:
+            print("Nenhum jogo encontrado nessa Categoria.")
+
+
+def filtrar_prioridade():
+    print("===== Filtre por Prioridade =====")
+    achar_prioridade = input("Digite uma prioridade para filtrar: (baixa/media/alta)").lower().strip()
+    print("=== Jogos Encontrados: ===")
+    for element in tarefas:
+        if element['Prioridade'].lower() == achar_prioridade:
+            print(f"{element['Nome']}")
+    else:
+        print("Nenhum jogo encontrado com essa Prioridade")
+
+
+
+while True:
+    menu = input("""
+==============================================================
+                 GERENCIADOR DE JOGOS
+==============================================================
+    Escolha uma opção:
+        1 - Adicionar Novo Jogo
+        2 - Ver todos os Jogos
+        3 - Marcar jogatina como concluída
+        4 - Filtrar jogo por categoria
+        5 - Filtrar jogo por prioridade
+        0 - Sair
+        OBS: Escolha apenas opção por vez: (1/2/3/4/5/0)
+==============================================================
+""").strip()
+    
+    if menu == "1":
+        add_tarefa()
+    elif menu == "2":
+        listar_tarefas()
+    elif menu == "3":
+        marcar_concluida()
+    elif menu == "4":
+        filtrar_categoria()
+    elif menu == "5":
+        filtrar_prioridade()
+    elif menu == "0":
+        print("=== Até logo! ===")
+        break
+    else:
+        print("Opção inválida, tente novamente!")
