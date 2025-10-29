@@ -1,0 +1,22 @@
+import flet as ft
+
+def main(pagina:ft.Page):
+    pagina.title = "MyTasks"
+    pagina.bgcolor = "#FFFED2"
+    lista_tarefas = ft.Column()
+
+    def tarefa(e):
+        if campo_titulo.value != "":
+            nova_tarefa = ft.Text(f"[TAREFA]: {campo_titulo.value} / [DESCRIÇÃO]: {campo_info.value}", color="#FF69B4", size=25)
+            lista_tarefas.controls.append(nova_tarefa)
+            campo_titulo.value = ""
+            campo_info.value = ""
+            pagina.update()
+
+    texto1 = ft.Text(value="Bem vindo ao MyTasks, sua lista de tarefas virtual", color="#FF69B4", bgcolor="#FFFED2", size=32, weight="bold")
+    campo_titulo = ft.TextField(label="Tarefa", color="#FF69B4", bgcolor="#FFFFFF")
+    campo_info = ft.TextField(label="Descrição", color="#FF69B4", bgcolor="#FFFFFF")
+    botao = ft.ElevatedButton(text="Save", bgcolor="#FF69B4", color="white", on_click=tarefa)
+    pagina.add(texto1, campo_titulo, campo_info, botao, ft.Text("Tarefas Salvas:", color="#FF69B4", size=22, weight="bold"), lista_tarefas)
+
+ft.app(target=main)
