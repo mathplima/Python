@@ -1,0 +1,24 @@
+import flet as ft
+
+def main(pagina:ft.Page):
+    pagina.title = "MyContacts"
+    pagina.bgcolor = "#D2FFFB"
+    lista_contatos = ft.Column()
+
+    def tarefa(e):
+        if campo_nome.value != "":
+            nova_tarefa = ft.Text(f"[NOME]: {campo_nome.value} / [E-MAIL]: {campo_email.value} / [OBSERVAÇÃO]: {campo_obs.value}", color="#000000", size=25)
+            lista_contatos.controls.append(nova_tarefa)
+            campo_nome.value = ""
+            campo_email.value = ""
+            campo_obs.value = ""
+            pagina.update()
+
+    texto1 = ft.Text(value="Bem vindo ao MyContacts, sua lista de contatos virtual", color="#CCCCCC", bgcolor="#D2FFFB", size=32, weight="bold")
+    campo_nome = ft.TextField(label="Nome", color="#65CFD6", bgcolor="#FFFFFF")
+    campo_email = ft.TextField(label="E-mail", color="#65CFD6", bgcolor="#FFFFFF")
+    campo_obs = ft.TextField(label="Obs.", color="#65CFD6", bgcolor="#FFFFFF")
+    botao = ft.ElevatedButton(text="Save", bgcolor="#65CFD6", color="#000000", on_click=tarefa)
+    pagina.add(texto1, campo_nome, campo_email, campo_obs, botao, ft.Text("Meus Contatos:", color="#CCCCCC", size=22, weight="bold"), lista_contatos)
+
+ft.app(target=main)
