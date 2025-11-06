@@ -1,0 +1,31 @@
+class Animal():
+    def __init__(self, nome:str):
+        self.nome = nome
+
+    def falar(self):
+        return f"{self.nome} está fazendo um som genérico."
+
+girafa = Animal(nome="Girafa")
+print(girafa.falar())
+
+
+class Cachorro():
+    def __init__(self, nome:str):
+        self.nome = nome
+
+    def falar(self):
+        return f"{self.nome} está latindo."
+
+cachorro = Cachorro(nome="Bob")
+print(cachorro.falar())
+
+
+class Gato():
+    def __init__(self, nome:str):
+        self.nome = nome
+    
+    def falar(self):
+        return f"{self.nome} está miando."
+
+gato = Gato(nome="Xeleleu")
+print(gato.falar())
