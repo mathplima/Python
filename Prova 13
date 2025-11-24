@@ -1,0 +1,43 @@
+class ContaBancaria():
+    def __init__(self, saldo:float, titular:str):
+        self.__saldo = saldo
+        self.__titular = titular
+    
+    def getTitular(self):
+        return self.__titular
+    
+    def setTitular(self, novoTitular:str):
+        titular_teste = input("Informe o nome do Titular que você deseja trocar: ")
+        if titular_teste == self.__titular:
+            novoNome = input("Informe o nome nome do Titular: ")
+            novoTitular = novoNome
+            self.__titular = novoTitular
+        else:
+            return f"Erro: o nome do titular está incorreto!"
+    
+    def depositar(self, valor:float):
+        titular_teste = input("Informe o nome do Titular que você deseja depositar: ")
+        if titular_teste == self.__titular:
+            if valor > 0:
+                self.__saldo += valor
+                return f"O valor de R${valor} foi depositado com sucesso!"
+            else:
+                return f"Erro: valor inválido!"
+        else:
+            return f"Erro: o nome do titular está incorreto!"
+    
+    def sacar(self, valor:float):
+        titular_teste = input("Informe o nome do Titular que você deseja sacar: ")
+        if titular_teste == self.__titular:
+            if valor <= self.__saldo:
+                self.__saldo -= valor
+                return f"O valor de R${valor} foi sacado com sucesso!"
+            else:
+                return f"Erro: saldo insuficiente!"
+        else:
+            return f"Erro: o nome do titular está incorreto!"
+    
+    def verSaldo(self):
+        titular_teste = input("Informe o nome do Titular que você deseja ver o saldo: ")
+        if titular_teste == self.__titular:
+            return f"Seu saldo é de R${self.__saldo}"
