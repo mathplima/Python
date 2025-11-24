@@ -1,0 +1,42 @@
+class Veiculo():
+    def __init__(self, marca:str, modelo:str, ano:int, cor:str):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+        self.cor = cor
+        self.ligado = True
+    
+    def movimentar(self):
+        if self.ligado:
+            return f"O veiculo está em movimento!"
+        else:
+            return f"Erro: Ligue o veículo para movimentar ele."
+
+
+class Carro(Veiculo):
+    def __init__(self, marca, modelo, ano, cor):
+        super().__init__(marca, modelo, ano, cor)
+    
+    def movimentar(self):
+        if self.ligado:
+            return f"O carro está em movimento!"
+        else:
+            return f"Erro: Ligue o carro primeiro."
+
+
+class Moto(Veiculo):
+    def __init__(self, marca, modelo, ano, cor):
+        super().__init__(marca, modelo, ano, cor)
+    
+    def movimentar(self):
+        if self.ligado:
+            return f"A moto está em movimento!"
+        else:
+            return f"Erro: Ligue a moto primeiro."
+
+veiculo1 = Veiculo(marca="BYD", modelo="Dolphin", ano=2026, cor="pink")
+carro1 = Carro(marca="Fiat", modelo="Mobi", ano=2019, cor="vermelho")
+moto1 = Moto(marca="Honda", modelo="CG160 Titan", ano=2018, cor="vermelho")
+print(veiculo1.movimentar())
+print(carro1.movimentar())
+print(moto1.movimentar())
